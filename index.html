@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#794653">
+  <meta name="robots" content="noindex,nofollow"><meta name="description" content="以星等記錄吃過的店、收集待吃清單與五間此生最愛，分享專欄與現場候位。">
+  <title>食星｜免登入體驗版</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23794653'/%3E%3Cpath d='m16 5 3.3 6.7 7.4 1.1-5.4 5.2 1.3 7.4-6.6-3.5-6.6 3.5 1.3-7.4-5.4-5.2 7.4-1.1Z' fill='%23e9c988'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles.css?v=20261017-02">
+  <script defer src="./restaurants.js?v=20261009-16"></script>
+  <script defer src="./demo-runtime.js"></script>
+  <script defer src="./app.js?v=20261017-02"></script>
+</head>
+<body><aside class="demo-banner"><strong>食星體驗版</strong><span>免登入 · 店家、地址、位置、社群評分皆為模擬 · 你的操作只存此瀏覽器</span><button type="button" data-demo-reset>重置體驗</button><p id="demo-status" role="status">試試：找店加入待吃 → 給吃過的店評分 → 轉盤選下一餐。</p></aside>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="食星首頁"><span class="brand-mark" aria-hidden="true">✦</span>食星</a>
+    <nav aria-label="主要導覽">
+      <button type="button" data-page="explore" aria-current="page">探索餐廳</button>
+      <button type="button" data-page="lists">專欄</button>
+      <button type="button" data-page="people">食友</button>
+      <button type="button" data-page="profile">我的美食</button>
+    </nav>
+    <button type="button" class="avatar" data-page="profile" aria-label="liaOAO 的美食">L</button>
+  </header>
+  <div id="sync-status" class="sync-status" role="status" hidden></div>
+  <div id="app"></div>
+  <dialog id="wheel-picker-dialog" aria-labelledby="wheel-picker-title"></dialog>
+  <dialog id="wait-dialog" aria-labelledby="wait-title"></dialog>
+  <dialog id="person-dialog" aria-labelledby="person-title"></dialog>
+  <dialog id="article-dialog" aria-labelledby="article-title"></dialog>
+  <dialog id="rating-dialog" aria-labelledby="rating-title"></dialog>
+  <dialog id="key-dialog" aria-labelledby="key-title">
+    <div class="dialog-head"><h2 id="key-title">同時看所有餐廳</h2><button type="button" data-close="key-dialog" aria-label="關閉">×</button></div>
+    <p>加入 Google Maps 測試用金鑰，就能在同一張地圖顯示收藏餐廳與你的星等圖釘。</p>
+    <ol class="setup-steps">
+      <li><a href="https://developers.google.com/maps/documentation/javascript/demo-key" target="_blank" rel="noopener noreferrer">開啟 Google 官方申請說明</a>，選「Get a Demo Key」。測試版免費，有每日用量限制。</li>
+      <li>登入你的 Google 帳號、閱讀條款後取得金鑰。</li>
+      <li>把金鑰貼到下面，按「啟用多店地圖」。</li>
+    </ol>
+    <form id="key-form">
+      <label for="maps-key">Google Maps 測試用金鑰</label>
+      <input id="maps-key" name="key" type="password" autocomplete="off" required placeholder="貼上測試用金鑰">
+      <p class="muted small">金鑰只在這次開啟的頁面使用。正式上線需設定網站限制及正式帳務。</p>
+      <p id="key-feedback" class="feedback" role="status"></p>
+      <button type="submit" class="primary">啟用多店地圖</button>
+    </form>
+  </dialog>
+  <dialog id="picker-dialog" aria-labelledby="picker-title"></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <noscript><p>請啟用 JavaScript，以使用地圖、星等與待吃清單。</p></noscript>
+</body>
+</html>
